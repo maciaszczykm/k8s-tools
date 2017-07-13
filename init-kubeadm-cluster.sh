@@ -12,5 +12,5 @@ sudo chown -R maciaszczykm /home/maciaszczykm
 kubectl taint nodes --all node-role.kubernetes.io/master-
 
 # Deploy flannel.
-export ARCH=amd64
-curl -sSL "https://github.com/coreos/flannel/blob/master/Documentation/kube-flannel.yml?raw=true" | sed "s/amd64/${ARCH}/g" | kubectl create -f -
+kubectl create -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+kubectl create -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel-rbac.yml
