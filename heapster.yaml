@@ -1,3 +1,52 @@
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: "influxdb"
+  namespace: "kube-system"
+  labels:
+    app: "influxdb"
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: "influxdb"
+        name: "influxdb"
+        app: "influxdb"
+    spec:
+      containers:
+        - name: "influxdb"
+          image: "influxdb:0.13.0"
+          ports:
+            - containerPort: 8083
+            - containerPort: 8086
+          env:
+            - name: INFLUXDB_DATA_QUERY_LOG_ENABLED
+              value: "true"
+          imagePullPolicy: "Always"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: influxdb
+  namespace: kube-system
+  labels:
+    app: influxdb
+spec:
+  type: "LoadBalancer"
+  ports:
+  - port: 8086
+    protocol: TCP
+    targetPort: 8086
+    name: external
+  - port: 8083
+    protocol: TCP
+    targetPort: 8083
+    name: admin
+  selector:
+    app: influxdb
+---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
