@@ -29,4 +29,4 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/s
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard-head.yaml
 
 # Deploy other resources for testing.
-# TODO
+kubectl apply -R -f ./yamls
