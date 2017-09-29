@@ -1,5 +1,4 @@
 # Script initializing multi node dind cluster.
-# Tested on macOS.
 
 # Use remote script to delete cluster.
 curl -s https://raw.githubusercontent.com/Mirantis/kubeadm-dind-cluster/master/fixed/dind-cluster-v1.7.sh | bash /dev/stdin down

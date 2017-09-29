@@ -1,5 +1,5 @@
 # Script initializing single node kubeadm cluster.
-# Tested on Ubuntu.
+# Requirements: kubeadm.
 
 # Delete cluster.
 sudo kubeadm reset
