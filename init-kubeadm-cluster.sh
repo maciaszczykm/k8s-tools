@@ -1,6 +1,5 @@
 # Script initializing single node kubeadm cluster.
 # Tested on Ubuntu.
-# Requires kubeadm.
 
 # Delete cluster.
 sudo kubeadm reset
@@ -25,8 +24,8 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel-rbac.yml
 
 # Deploy Dashboard.
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard-head.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard-head.yaml
 
 # Deploy other resources for testing.
 kubectl apply -R -f ./yamls
