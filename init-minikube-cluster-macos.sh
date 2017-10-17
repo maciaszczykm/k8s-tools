@@ -8,7 +8,7 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s http
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
-# Use remote script to init cluster.
+# Start cluster.
 minikube start
 
 # Deploy Dashboard.
