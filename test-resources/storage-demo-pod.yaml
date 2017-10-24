@@ -13,6 +13,18 @@ spec:
   hostPath:
     path: "/tmp/data"
 ---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: task-pv-claim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+---
 kind: Pod
 apiVersion: v1
 metadata:
