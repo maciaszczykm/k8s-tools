@@ -1,0 +1,33 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: task-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/data"
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: storage-demo-pod
+spec:
+  volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+       claimName: task-pv-claim
+  containers:
+    - name: task-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: task-pv-storage
