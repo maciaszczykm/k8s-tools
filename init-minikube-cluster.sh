@@ -1,13 +1,15 @@
 #!/bin/bash
 
-echo "Cleaning after previous cluster"
+source setup-logger.sh
+
+log::info "Cleaning after previous cluster"
 minikube stop
 
 source download-kubectl.sh
 
-echo "Initializing cluster"
+log::info "Initializing cluster"
 minikube start
 
 source deploy-resources.sh
 
-echo "Cluster is ready"
+log::info "Cluster is ready"
