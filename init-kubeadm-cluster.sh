@@ -17,9 +17,8 @@ sudo chown -R ${USER} ${HOME}
 log::info "Tainting master node for development usage"
 kubectl taint nodes --all node-role.kubernetes.io/master-
 
-log::info "Deploying flannel"
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel-rbac.yml
+log::info "Deploying weave-net"
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 
 source deploy-resources.sh
 
