@@ -3,12 +3,16 @@
 source setup-logger.sh
 
 SCRIPT_K8S_VERSION=v1.8
+APISERVER_PORT=8001
 REMOTE_SCRIPT=https://raw.githubusercontent.com/Mirantis/kubeadm-dind-cluster/master/fixed/dind-cluster-${SCRIPT_K8S_VERSION}.sh
 LOCAL_SCRIPT=./dind-cluster-${SCRIPT_K8S_VERSION}.sh
 
 log::info "Downloading remote scipt from ${REMOTE_SCRIPT}"
 curl -LO ${REMOTE_SCRIPT} --progress-bar
 chmod +x ${LOCAL_SCRIPT}
+
+log::info "Setting port that will be used to ${APISERVER_PORT}"
+export APISERVER_PORT=${APISERVER_PORT}
 
 log::info "Cleaning after previous cluster"
 ${LOCAL_SCRIPT} down
