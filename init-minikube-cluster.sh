@@ -2,7 +2,7 @@
 
 source setup-logger.sh
 
-MINIKUBE_K8S_VERSION=v1.8.0
+MINIKUBE_K8S_VERSION=v1.10.0
 
 log::info "Cleaning after previous cluster"
 minikube stop
