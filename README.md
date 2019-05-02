@@ -1,3 +1,3 @@
-# Kubernetes Tools
+# Sample Kubernetes Resources
 
-Files and scripts to work with Kubernetes.
+Sample Kubernetes resources that can be used for testing.
